@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'employee',
+    'employee', # Different approach to intall app
+    'members.apps.MembersConfig', # Different approach also
 ]
 
 MIDDLEWARE = [
