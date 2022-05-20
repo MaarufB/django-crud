@@ -1,0 +1,17 @@
+
+{% extends 'main.html' %}
+<!-- {% load static %} -->
+{% block content %}
+<table border="2">
+{% for x in members %}
+<tr>
+    <td><a href="{% url 'members:update_view' x.id %}">{{x.id}}</a></td>
+    <td>{{x.firstname}}</td>
+    <td>{{x.lastname}}</td>
+    <td><a class="btn btn-danger"href="{% url 'members:delete_member' x.id %}">Delete</a></td>
+</tr>
+{% endfor %}
+</table>
+
+<a class="btn btn-primary" href="{% url 'members:add_view' %}">Add a Member</a>
+{% endblock content %}

@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf.urls.static import static
+from django.conf import settings
 app_name = 'members'
 
 urlpatterns = [
@@ -11,4 +13,4 @@ urlpatterns = [
     # path('update_member_view/<int:member_id>/', views.update_member_view, 'update_member_view'),
     path('update_view/<int:member_id>/', views.update_view, name='update_view'),
     path('update_view/update_member/<int:member_id>', views.update_member, name='update_member'),
-] 
+]
