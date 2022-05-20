@@ -23,9 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-pqzc)t*)%i2ypm80u**t#arr)#to^oprg!v8_u_1=yhw!-js@l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Make sure to set DEBUG to false when in production
+DEBUG = False #True
 
-ALLOWED_HOSTS = []
+
+# append or put the ip address of the allowed host
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'mysite.com']
 
 
 # Application definition
@@ -42,6 +45,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # add white noise here
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -123,11 +129,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-import os
+
 STATIC_URL = 'static/' #/static/'
+
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
+
+MEDIA_ROOT = BASE_DIR / 'static/images'
+
+# This is for production when DEBUG = False
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

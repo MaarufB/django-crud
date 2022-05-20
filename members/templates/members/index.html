@@ -7,14 +7,16 @@
             <td>#</td>
             <td>First Name</td>
             <td>Last Name</td>
+            <td>Images</td>
             <td></td>
             <td></td>
         </tr>
         {% for x in members %}
         <tr>
-            <td>{{e.id}}</td>
+            <td>{{x.id}}</td>
             <td>{{x.firstname}}</td>
             <td>{{x.lastname}}</td>
+            <td><img src="{{x.images_file.url}}" alt=""></td>
             <td><a class="btn btn-success" href="{% url 'members:update_view' x.id %}">Update</a></td>
             <td><a class="btn btn-danger" href="{% url 'members:delete_member' x.id %}">Delete</a></td>
         </tr>

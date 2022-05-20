@@ -1,3 +1,4 @@
+import imp
 from django.shortcuts import render # this is the shortcut to render a view
 from django.http import JsonResponse, HttpResponse
 from django.template import loader
@@ -6,6 +7,13 @@ from django.urls import reverse
 
 from members.serializers import MemberSerializer
 from .models import Members
+
+
+from asgiref.sync import sync_to_async
+
+import os 
+os.environ['DJANGO_ALLOW_ASYNC_UNSAFE'] = 'true'
+
 # Create your views here.
 
 # def index(request):
@@ -13,9 +21,15 @@ from .models import Members
 
 #     return HttpResponse(template.render())
 
+async def get_data_member(self):
+    return Members.objects.all().values()
+
+@sync_to_async()
 def index(request):
     # create a members object
     members = Members.objects.all().values()
+    # members = sync_to_async(get_data_member())
+
     template = loader.get_template('members/index.html')
     context = {
         'members': members,
@@ -37,7 +51,9 @@ def add_view(request):
 def add_member(request):
     firstname = request.POST['first']
     lastname = request.POST['last']
-    member = Members(firstname=firstname, lastname=lastname)
+    image = request.FILES
+    member = Members(firstname=firstname, lastname=lastname, images_file=image)
+    # print(member.images_file)
     member.save()
 
     return HttpResponseRedirect(reverse('members:index'))

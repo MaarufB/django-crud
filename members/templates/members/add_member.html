@@ -4,30 +4,35 @@
 
 <h1>Add member</h1>
 <div class="containter border border-danger">
-    <form class="form" method="POST", action="{% url 'members:add_member' %}">
+    <form class="form" method="POST", action="{% url 'members:add_member' %}" enctype="multipart/form-data">
         {% csrf_token %}
     
         <!-- <input name="first">
         <br>
         <input name="last">
         <br> -->
-        <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">First Name</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control-plaintext" name="first">
+        <div class="container-fluid">
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">First Name</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control form-control-sm" name="first">
+                </div>
             </div>
-        </div>
-        <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">Last Name</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control-plaintext" name="last">
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Last Name</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control form-control-sm" name="last">
+                </div>
             </div>
+
+            <label for="formFile" class="form-label">Default file input example</label>
+            <input class="form-control" type="file" id="formFile" name="image">
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">Add</button>
+            </div>
+            
         </div>
-    
-    
-        <div class="col-auto">
-            <button type="submit" class="btn btn-primary mb-3">Add</button>
-          </div>
+        
     </form>
 </div>
 
