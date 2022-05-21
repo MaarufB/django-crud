@@ -1,0 +1,4 @@
+CRUD_APP/settings.py
+CRUD_APP/__pycache__/*
+employee/__pycache__/*
+members/__pycache__/*
