@@ -1,0 +1,8 @@
+# How to add gitignore?
+
+    * git rm -r --cached .
+    * git commit add .
+    * git commit -m "git commit added"
+    * git push
+
+# 
