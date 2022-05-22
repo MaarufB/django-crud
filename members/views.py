@@ -51,7 +51,8 @@ def add_view(request):
 def add_member(request):
     firstname = request.POST['first']
     lastname = request.POST['last']
-    image = request.FILES
+    image = request.POST['image']
+    # image = request.FILES
     member = Members(firstname=firstname, lastname=lastname, images_file=image)
     # print(member.images_file)
     member.save()

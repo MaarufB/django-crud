@@ -5,4 +5,8 @@
     * git commit -m "git commit added"
     * git push
 
-# 
+# TODO
+
+    * Change form to form Models
+    * Add Admin Page
+    * 
